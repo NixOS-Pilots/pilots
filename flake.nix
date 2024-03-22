@@ -26,6 +26,8 @@
       {
         # checks
         checks.pre-commit-check = genChecks system;
-        packages = { };
+        packages = {
+          glider = pkgs.callPackage ./pkgs/glider { };
+        };
       });
 }
