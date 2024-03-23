@@ -13,9 +13,12 @@
 
 Pioneering seamless integration of nightly builds for the NixOS community, fostering innovation and collaboration without compromising system stability.
 
-## News
+## Social groups
 
-A news channel can be found on our [Telegram Group](https://t.me/nixos_pilots_news).
+Telegram group chats:
+
+- [NixOS-Pilots Chats](https://t.me/nixos_pilots)
+- [NixOS-Pilots News](https://t.me/nixos_pilots_news)
 
 ## How to use
 
