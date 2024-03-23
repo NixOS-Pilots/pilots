@@ -29,7 +29,7 @@
         checks.pre-commit-check = genChecks system;
         packages = {
           nix-fast-build = inputs.nix-fast-build.packages.${system}.default;
-          glider_nightly = pkgs.callPackage ./pkgs/glider { };
+          glider = pkgs.callPackage ./pkgs/glider { };
           qutebrowser_nightly = pkgs.qt6Packages.callPackage ./pkgs/qutebrowser { };
         };
       });
