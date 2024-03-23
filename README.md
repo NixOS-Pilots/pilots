@@ -15,7 +15,7 @@ Pioneering seamless integration of nightly builds for the NixOS community, foste
 
 ## Social groups
 
-Telegram group chats:
+Telegram groups
 
 - [NixOS-Pilots Chats](https://t.me/nixos_pilots)
 - [NixOS-Pilots News](https://t.me/nixos_pilots_news)
