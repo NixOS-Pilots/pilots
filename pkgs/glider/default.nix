@@ -1,6 +1,8 @@
-{ pkgs, lib, ... }:
+{ lib
+, buildGoModule
+, fetchFromGitHub
+}:
 
-with pkgs;
 let
   pname = "glider";
   version = "unstable-2024-01-29-6d2b1e9";
