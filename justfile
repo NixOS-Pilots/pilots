@@ -62,8 +62,8 @@ repl:
 
 # apply fix from linters
 lint:
-  @statix fix --ignore 'templates/' .
-  @deadnix --edit --exclude 'templates/' .
+  @statix fix .
+  @deadnix --edit .
 
 # ===== Misc ===== #
 

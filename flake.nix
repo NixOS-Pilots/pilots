@@ -30,6 +30,7 @@
         packages = {
           nix-fast-build = inputs.nix-fast-build.packages.${system}.default;
           glider = pkgs.callPackage ./pkgs/glider { };
+          qutebrowser = pkgs.qt6Packages.callPackage ./pkgs/qutebrowser { };
         };
       });
 }
