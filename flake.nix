@@ -1,5 +1,5 @@
 {
-  description = "Nix flake for bleeding-edge and unreleased open-source packages.";
+  description = "Nix flake for pioneering seamless integration of nightly builds for the NixOS community.";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
