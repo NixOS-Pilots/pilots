@@ -9,19 +9,6 @@
   <img src="https://custom-icon-badges.herokuapp.com/github/last-commit/yqlbu/nixos-config?style=flat&logo=history&colorA=24273A&colorB=C4EEF2" alt="lastcommit"/>
 </p>
 
-## Table of contents
-
-<!-- vim-markdown-toc GFM -->
-
-* [Our mission](#our-mission)
-* [Social groups](#social-groups)
-* [How to use](#how-to-use)
-* [Binary cache](#binary-cache)
-* [Lists of options and packages](#lists-of-options-and-packages)
-* [License](#license)
-
-<!-- vim-markdown-toc -->
-
 ## Our mission
 
 Pioneering seamless integration of nightly builds for the NixOS community, fostering innovation and collaboration without compromising system stability.
