@@ -16,8 +16,7 @@
     flake-utils.lib.eachSystem supportedSystems (system:
       let
         pkgs = (import nixpkgs) { inherit system; config.allowUnfree = true; };
-        # lib = nixpkgs.lib;
-        # sharedLib = (import ./lib { inherit lib; });
+        inherit (import ./lib { inherit (nixpkgs) lib; }) sharedLib;
         genChecks = system: (pre-commit-hooks.lib.${system}.run {
           src = ./.;
           hooks = {
@@ -34,8 +33,7 @@
           nix-fast-build = inputs.nix-fast-build.packages.${system}.default;
           glider = pkgs.callPackage ./pkgs/glider { };
           qutebrowser_nightly = pkgs.qt6Packages.callPackage ./pkgs/qutebrowser { };
-          # neovim_nightly = pkgs.callPackage ./pkgs/neovim { inherit sharedLib; };
-          neovim_nightly = pkgs.callPackage ./pkgs/neovim { };
+          neovim_nightly = pkgs.callPackage ./pkgs/neovim { inherit sharedLib; };
         };
       });
 }

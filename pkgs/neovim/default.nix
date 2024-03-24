@@ -1,12 +1,11 @@
 { stdenv
 , fetchFromGitHub
-  # , sharedLib
+, sharedLib
 }:
 
 stdenv.mkDerivation (finalAttrs: {
   name = "neovim";
-  src = ((import ../../lib/flake-compat.nix { }).legacyGetFlake
-    # src = (sharedLib.legacyGetFlake
+  src = (sharedLib.legacyGetFlake
     {
       src = fetchFromGitHub
         {
