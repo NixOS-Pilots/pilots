@@ -2,6 +2,7 @@
 , fetchFromGitHub
 , sharedLib
 , lib
+, ...
 }:
 
 stdenv.mkDerivation (finalAttrs: {

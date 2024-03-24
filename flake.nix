@@ -16,7 +16,9 @@
     flake-utils.lib.eachSystem supportedSystems (system:
       let
         pkgs = (import nixpkgs) { inherit system; config.allowUnfree = true; };
-        inherit (import ./lib { inherit (nixpkgs) lib; }) sharedLib;
+        inherit (nixpkgs) lib;
+        inherit (import ./lib { inherit lib; }) sharedLib;
+        # function to generate pre-commit-checks
         genChecks = system: (pre-commit-hooks.lib.${system}.run {
           src = ./.;
           hooks = {
@@ -25,15 +27,27 @@
             deadnix.enable = true; # linter
           };
         });
+        # function to generate package as output
+        genPkgs = { packages, qtPackages }: (
+          # (lib.attrsets.mergeAttrsList): merge attribute sets, expect input as a list
+          lib.attrsets.mergeAttrsList (
+            # (map): instantiate package from input list
+            (map (package: { "${package}_nightly" = pkgs.callPackage ./pkgs/${package} { inherit sharedLib; }; }) packages) ++
+            (map (package: { "${package}_nightly" = pkgs.qt6Packages.callPackage ./pkgs/${package} { inherit sharedLib; }; }) qtPackages)
+          ));
       in
       {
         # checks
         checks.pre-commit-check = genChecks system;
-        packages = {
-          nix-fast-build = inputs.nix-fast-build.packages.${system}.default;
-          glider = pkgs.callPackage ./pkgs/glider { };
-          qutebrowser_nightly = pkgs.qt6Packages.callPackage ./pkgs/qutebrowser { };
-          neovim_nightly = pkgs.callPackage ./pkgs/neovim { inherit sharedLib; };
-        };
+        packages = { nix-fast-build = inputs.nix-fast-build.packages.${system}.default; } //
+          genPkgs {
+            packages = [
+              "glider"
+              "neovim"
+            ];
+            qtPackages = [
+              "qutebrowser"
+            ];
+          };
       });
 }

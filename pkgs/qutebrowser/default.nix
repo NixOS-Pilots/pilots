@@ -21,6 +21,7 @@
   # can cause issues on some graphics chips
 , enableVulkan ? false
 , vulkan-loader
+, ...
 }:
 
 let
