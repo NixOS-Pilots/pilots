@@ -1,11 +1,22 @@
 { stdenv
 , fetchFromGitHub
 , sharedLib
+, lib
 }:
 
 stdenv.mkDerivation (finalAttrs: {
-  name = "neovim";
-  version = "unstable-2024-03-24-ed91060";
+  pname = "nvim";
+  version = "unstable-2024-03-24-unwrapped";
+
+  meta = with lib; {
+    description = "Vim-fork focused on extensibility and usability";
+    homepage = "https://neovim.io/";
+    license = licenses.asl20;
+    platforms = platforms.linux;
+    mainProgram = pname;
+    maintainers = with maintainers; [ kev ];
+  };
+
   src = (sharedLib.legacyGetFlake
     {
       src = fetchFromGitHub
