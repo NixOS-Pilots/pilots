@@ -16,6 +16,8 @@
     flake-utils.lib.eachSystem supportedSystems (system:
       let
         pkgs = (import nixpkgs) { inherit system; config.allowUnfree = true; };
+        # lib = nixpkgs.lib;
+        # sharedLib = (import ./lib { inherit lib; });
         genChecks = system: (pre-commit-hooks.lib.${system}.run {
           src = ./.;
           hooks = {
