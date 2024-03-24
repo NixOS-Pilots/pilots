@@ -6,6 +6,7 @@
     flake-utils.url = "github:numtide/flake-utils";
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
     nix-fast-build.url = "github:Mic92/nix-fast-build";
+    flake-compat.url = "github:edolstra/flake-compat";
   };
 
   outputs = { nixpkgs, flake-utils, ... }@inputs: with inputs;
@@ -31,6 +32,8 @@
           nix-fast-build = inputs.nix-fast-build.packages.${system}.default;
           glider = pkgs.callPackage ./pkgs/glider { };
           qutebrowser_nightly = pkgs.qt6Packages.callPackage ./pkgs/qutebrowser { };
+          # neovim_nightly = pkgs.callPackage ./pkgs/neovim { inherit sharedLib; };
+          neovim_nightly = pkgs.callPackage ./pkgs/neovim { };
         };
       });
 }
