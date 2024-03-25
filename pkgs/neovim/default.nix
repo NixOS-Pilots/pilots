@@ -5,18 +5,9 @@
 , ...
 }:
 
-stdenv.mkDerivation (finalAttrs: {
+stdenv.mkDerivation {
   pname = "nvim";
   version = "unstable-2024-03-24-unwrapped";
-
-  meta = with lib; {
-    description = "Vim-fork focused on extensibility and usability";
-    homepage = "https://neovim.io/";
-    license = licenses.asl20;
-    platforms = platforms.linux;
-    mainProgram = pname;
-    maintainers = with maintainers; [ kev ];
-  };
 
   src = (sharedLib.legacyGetFlake
     {
@@ -33,4 +24,13 @@ stdenv.mkDerivation (finalAttrs: {
   installPhase = ''
     cp -r . $out/
   '';
-})
+
+  meta = with lib; {
+    description = "Vim-fork focused on extensibility and usability";
+    homepage = "https://neovim.io/";
+    license = licenses.asl20;
+    platforms = platforms.linux;
+    mainProgram = pname;
+    maintainers = with maintainers; [ kev ];
+  };
+}
