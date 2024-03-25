@@ -42,7 +42,7 @@ build pkg:
   @nom build .#{{ pkg }} --print-out-paths
 
 build-push pkg:
-  @nom build .#{{ pkg }} --print-out-paths | cachix push {{ cachix-target }}
+  @nom build .#{{ pkg }} --print-out-paths | cachix push -c 16 {{ cachix-target }}
 
 # run nix pkg
 run pkg:
