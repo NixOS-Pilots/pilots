@@ -29,7 +29,7 @@ upp input:
 show:
   @nix flake show
 
-# eval and build nixosConfiguration for all profiles
+# eval and build packages
 eval:
   @nix run .#nix-fast-build
 
