@@ -25,6 +25,7 @@
 }:
 
 let
+  metadata = builtins.fromJSON (builtins.readFile ./metadata.json);
   isQt6 = lib.versions.major qtbase.version == "6";
   pdfjs = let version = "4.0.379"; in
     fetchzip {
@@ -32,7 +33,7 @@ let
       hash = "sha256-Ymc/8PWFTQP08XlJsz+aB8Mwxm+p0bq4GRPvg8FDZ00=";
       stripRoot = false;
     };
-  version = "unstable-2024-03-24-93b8438";
+  inherit (metadata) version;
 in
 python3.pkgs.buildPythonPackage {
   pname = "qutebrowser" + lib.optionalString (!isQt6) "-qt5";
@@ -40,8 +41,8 @@ python3.pkgs.buildPythonPackage {
   src = fetchFromGitHub {
     owner = "qutebrowser";
     repo = "qutebrowser";
-    rev = "93b8438ebc418d880fb3f0d4eb5ae86df08488dc";
-    hash = "sha256-h0thhffr38OQszJbz9fNbOTdACEXWDFeN8dMkUaR6GY=";
+    inherit (metadata) rev;
+    inherit (metadata) hash;
   };
 
   # Needs tox
