@@ -9,6 +9,7 @@ set dotenv-load := true
 
 # assign default value to vars
 profile := "$PROFILE"
+cachix-target := "nixospilots"
 
 # default recipe to display help information
 default:
@@ -38,7 +39,10 @@ check:
 
 # build nix pkg
 build pkg:
-  @nom build .#{{ pkg }}
+  @nom build .#{{ pkg }} --print-out-paths
+
+build-push pkg:
+  @nom build .#{{ pkg }} --print-out-paths | cachix push {{ cachix-target }}
 
 # run nix pkg
 run pkg:
