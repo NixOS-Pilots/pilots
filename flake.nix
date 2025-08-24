@@ -2,7 +2,7 @@
   description = "Nix flake for pioneering seamless integration of nightly builds for the NixOS community.";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
     nix-fast-build.url = "github:Mic92/nix-fast-build";
@@ -43,7 +43,6 @@
           genPkgs {
             packages = [
               "glider"
-              "neovim"
             ];
             qtPackages = [
               "qutebrowser"
