@@ -3,8 +3,8 @@ name: (Cron) Synchronize upstream flake inputs
 on:
   workflow_dispatch:
   schedule:
-    # Run this Action every month at 0:00pm UTC
-    - cron: "0 0 1 * *"
+    # Run this Action every week at 0:00pm UTC
+    - cron: "0 0 */7 * *"
 
 env:
   MAINTAINERS: piyoki,ryan4yin,oluceps
